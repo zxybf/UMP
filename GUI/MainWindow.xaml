@@ -1,0 +1,40 @@
+﻿<Window x:Class="GUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI"
+        xmlns:Machine1="clr-namespace:Machine;assembly=Machine"
+        xmlns:Controls1="clr-namespace:Util.Controls;assembly=Util.Controls"
+        mc:Ignorable="d"
+        Title="DWFritz UMP" Height="450" Width="800" Icon="packageIcon.png" Closing="Window_Closing">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="380*"/>
+            <RowDefinition Height="120*"/>
+        </Grid.RowDefinitions>
+        <TabControl Grid.RowSpan="2" >
+            <TabItem Header="Tab1" Content="Tab1"/>
+            <TabItem Header="Tab2"/>
+            <TabItem Header="轴控制">
+                <Grid>
+                    <TabControl TabStripPlacement="Left" >
+                        <TabItem Header="Galil">
+                         <Machine1:GalilControlWPF Name="Galil1" VerticalAlignment="Top" HorizontalAlignment="Left" /> 
+                        </TabItem>
+                        <TabItem Header="电机">
+                          <Machine1:StageControl />  
+                        </TabItem>
+                    </TabControl>  
+                </Grid>
+            </TabItem>
+            <TabItem Header="消息">
+                <Grid>
+                    <DataGrid x:Name="dgMsg" ItemsSource="{Binding Path=Messages}"></DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem/>
+        </TabControl>
+
+    </Grid>
+</Window>
